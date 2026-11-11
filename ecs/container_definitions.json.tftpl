@@ -1,0 +1,18 @@
+[
+    {
+        "name": "${app_name}",
+        "image": "${account_id}.dkr.ecr.us-east-1.amazonaws.com/localytics/${app_name}:${image_tag}",
+        "cpu": ${cpu},
+        "memory": ${memory},
+        "portMappings": [ { "containerPort": ${container_port}, "hostPort": ${host_port}, "protocol": "${protocol}" }],
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${app_name}-${deploy}",
+                "awslogs-region": "${region}",
+                "awslogs-stream-prefix": "${app_name}-${deploy}"
+            }
+        }
+   }
+]
